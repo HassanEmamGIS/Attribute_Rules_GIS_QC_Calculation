@@ -1,0 +1,5 @@
+// لحقل Y_Coord
+return Geometry($feature).Y
+
+// لحقل X_Coord
+return Geometry($feature).X
