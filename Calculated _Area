@@ -1,0 +1,2 @@
+var geom = Geometry($feature);
+return Area(geom);  // لا يعتمد على نظام الإحداثيات
