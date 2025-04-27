@@ -1,0 +1,13 @@
+// Load the Sewer Lines feature class
+var sewerLines = FeatureSetByName($datastore, "Sewer_Lines", ["Sewer_ID"], true)
+
+// Check if current water pipe intersects any sewer line
+var overlappingSewers = Intersects(sewerLines, Geometry($feature))
+
+// If intersection exists, update a field or flag
+if (Count(overlappingSewers) > 0) {
+    return "Overlap Detected"
+}
+
+// If no intersection, record that no overlap exists
+return "No Overlap"
