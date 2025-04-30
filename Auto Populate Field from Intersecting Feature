@@ -1,0 +1,13 @@
+// 🟢 جلب طبقة نقاط التوزيع مع الحقل SUBNUMBER
+var DBpoint = FeatureSetByName($datastore, "FCL_DISTRIBUTIONBOX", ["SUBNUMBER"]);
+
+// 🟢 البحث عن تقاطع بين المعلم الحالي والنقاط
+var DB_intersect = Intersects(DBpoint, Geometry($feature));
+
+// 🟢 إذا وُجد تقاطع، خذ أول نقطة وأرجع SUBNUMBER
+if (Count(DB_intersect) > 0) {
+    var val = First(DB_intersect);
+    return val.SUBNUMBER;
+} else {
+    return null;
+}
